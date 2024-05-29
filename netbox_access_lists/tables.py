@@ -9,8 +9,8 @@ class AccessListTable(NetBoxTable):
 
     class Meta(NetBoxTable.Meta):
         model = AccessList
-        fields = ('pk', 'id', 'name', 'default_action', 'comments', 'actions')
-        default_columns = ('name', 'default_action')
+        fields = ('pk', 'id', 'name', 'rule_count', 'default_action', 'comments', 'actions')
+        default_columns = ('name', 'rule_count', 'default_action')
 
 class AccessListRuleTable(NetBoxTable):
     access_list = tables.Column(linkify=True)
