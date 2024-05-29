@@ -2,6 +2,7 @@ from django.contrib.postgres.fields import ArrayField
 from django.db import models
 from netbox.models import NetBoxModel
 from utilities.choices import ChoiceSet
+from django.urls import reverse
 
 class ActionChoices(ChoiceSet):
     key = 'AccessListRule.action'
@@ -36,6 +37,9 @@ class AccessList(NetBoxModel):
     
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse('plugins:netbox_access_lists:accesslist', args=[self.pk])
 
     def get_default_action_color(self):
         return ActionChoices.get_color(self.default_action)
@@ -91,6 +95,9 @@ class AccessListRule(NetBoxModel):
     
     def __str__(self):
         return f'{self.access_list} - {self.index}'
+    
+    def get_absolute_url(self):
+        return reverse('plugins:netbox_access_lists:accesslistrule', args=[self.pk])
     
     def get_protocol_color(self):
         return ProtocolChoices.get_color(self.protocol)
