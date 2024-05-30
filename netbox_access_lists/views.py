@@ -11,10 +11,10 @@ class AccessListView(generic.ObjectView):
         return {'rules_table': table}
 
 class AccessListListView(generic.ObjectListView):
-    queryset = models.AccessList.objects.annotate(
-        rule_count = Count('rules')
-    )
+    queryset = models.AccessList.objects.annotate(rule_count=Count('rules'))
     table = tables.AccessListTable
+    filterset = filtersets.AccessListFilterSet
+    filterset_form = forms.AccessListFilterForm
 
 class AccessListEditView(generic.ObjectEditView):
     queryset = models.AccessList.objects.all()

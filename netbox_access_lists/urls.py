@@ -2,7 +2,7 @@ from django.urls import path
 from . import models, views
 from netbox.views.generic import ObjectChangeLogView
 
-urlpatterns = (
+urlpatterns = [
     # Access lists
     path('access-lists/', views.AccessListListView.as_view(), name='accesslist_list'),
     path('access-lists/add/', views.AccessListEditView.as_view(), name='accesslist_add'),
@@ -22,4 +22,4 @@ urlpatterns = (
     path('rules/<int:pk>/changelog/', ObjectChangeLogView.as_view(), name='accesslistrule_changelog', kwargs={
         'model': models.AccessListRule
     }),
-)
+]
