@@ -14,7 +14,6 @@ class AccessListRuleFilterSet(NetBoxModelFilterSet):
 class AccessListFilterSet(NetBoxModelFilterSet):
     id = django_filters.NumberFilter(field_name='id', lookup_expr='exact')
     default_action = django_filters.CharFilter(field_name='default_action', lookup_expr='exact')
-    # rule_count__lte = django_filters.NumberFilter(field_name='rule_count', lookup_expr='lte')
     rule_count = django_filters.RangeFilter(method='filter_rule_count')
 
     class Meta:
