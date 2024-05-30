@@ -17,10 +17,12 @@ class AccessListRuleForm(NetBoxModelForm):
         queryset=AccessList.objects.all()
     )
     source_prefix = DynamicModelChoiceField(
-        queryset=Prefix.objects.all()
+        queryset=Prefix.objects.all(),
+        required=False
     )
     destination_prefix = DynamicModelChoiceField(
-        queryset=Prefix.objects.all()
+        queryset=Prefix.objects.all(),
+        required=False
     )
 
     class Meta:
