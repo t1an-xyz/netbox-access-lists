@@ -42,7 +42,7 @@ class AccessList(NetBoxModel):
         return reverse('plugins:netbox_access_lists:accesslist', args=[self.pk])
 
     def get_default_action_color(self):
-        return ActionChoices.get_color(self.default_action)
+        return ActionChoices.colors.get(self.default_action)
 
 class AccessListRule(NetBoxModel):
     access_list = models.ForeignKey(
@@ -100,7 +100,7 @@ class AccessListRule(NetBoxModel):
         return reverse('plugins:netbox_access_lists:accesslistrule', args=[self.pk])
     
     def get_protocol_color(self):
-        return ProtocolChoices.get_color(self.protocol)
+        return ProtocolChoices.colors.get(self.protocol)
     
     def get_action_color(self):
-        return ActionChoices.get_color(self.action)
+        return ActionChoices.colors.get(self.action)
